@@ -10,10 +10,11 @@
                 "UNICODE",
                 "_UNICODE"
             ],
+            //此处是编译器路径，以后可直接在此修改
+            "compilerPath": "D:\\Program Files\\mingw64\\bin\\gcc.exe",
             "cStandard": "c11",
-            "cppStandard": "c++11",
-            "compilerPath": "D:/Program Files/mingw64/bin/g++.exe",
-            "intelliSenseMode": "windows-gcc-x64"
+            "cppStandard": "c++17",
+            "intelliSenseMode": "gcc-x64"
         }
     ],
     "version": 4
