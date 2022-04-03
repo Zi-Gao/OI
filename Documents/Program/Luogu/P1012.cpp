@@ -1,41 +1,37 @@
-/***
- * @Author: Zi_Gao
- * @Date: 2022-01-28 21:03:40
- * @LastEditTime: 2022-01-28 21:55:45
- * @LastEditors: Zi_Gao
- * @Description: 
- */
-#include <cstdio>
-#include <cstring>
-#include <algorithm>
-using namespace std;
-inline unsigned long long read(){
-    unsigned long long x=0,f=1;char c=getchar();
-    while(c<'0'||c>'9')c=='-'?f=-1:f,c=getchar();//?=if,:=else
-    while(c>='0'&&c<='9'){
-        x=(x<<3)+(x<<1)+(c&15);
-        c=getchar();
-    }
-    return x*f;
+#include<cstdio>
+#include<cstring>
+char s[100][255];
+int l[100];
+int main(void)
+{
+	int n;
+	char tmp1[1000],tmp2[1000];
+	scanf("%d",&n);
+	for (int i=0;i<n;i++)
+	{
+		scanf("%s",s[i]);
+		l[i]=strlen(s[i]);
+	}
+	for (int i=1;i<n;i++)
+		for (int j=0;j<n-i;j++)
+		{
+			strcpy(tmp1,s[j]);
+			strcat(tmp1,s[j+1]);
+			strcpy(tmp2,s[j+1]);
+			strcat(tmp2,s[j]);
+			if (strcmp(tmp1,tmp2)<0)
+			{
+				strcpy(tmp1,s[j]);
+				strcpy(s[j],s[j+1]);
+				strcpy(s[j+1],tmp1);
+			}
+		}
+	for (int i=0;i<n;i++)
+		printf("%s",s[i]);
+	putchar('\n');
+	fclose(stdin);
+	fclose(stdout);
+	return 0;
 }
-bool cmp(const unsigned long long &a,const unsigned long long &b){
-    return a>b;
-}
-int main(){
-    unsigned long long n=read();
-    unsigned long long arr[n]={0};
-    for(unsigned long long i=0;i<n;i++){
-        arr[i]=read();
-        while(arr[i]/10000000000==0){
-            arr[i]=arr[i]*10+9;
-        }
-    }
-    sort(arr,arr+n,cmp);
-    for(unsigned long long i=0;i<n;i++){
-        while(arr[i]%10==9){
-            arr[i]/=10;
-        }
-        printf("%llu",arr[i]);
-    }
-    return 0;
-}
+
+

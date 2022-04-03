@@ -1,14 +1,23 @@
 /***
  * @Author: Zi_Gao
- * @Date: 2022-01-19 09:46:12
- * @LastEditTime: 2022-02-14 14:24:35
- * @LastEditors: Zi_Gao
  * @Description: 
  */
 #include <cstdio>
+//#define file
 using namespace std;
 inline int read();
 int main(){
+	#ifdef file
+	freopen("sort.in", "r", stdin);
+	freopen("sort.out", "w", stdout);
+	#endif
+
+	
+
+	#ifdef file
+	fclose(stdin);
+	fclose(stdout);
+	#endif
     return 0;
 }
 inline int read(){
