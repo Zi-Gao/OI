@@ -32,8 +32,13 @@ int main(){
 	w=read();
 	
 	for(int i=0;i<n;i++){
+<<<<<<< HEAD
 		gifts[i].w=read();
 		gifts[i].v=read();
+=======
+		gifts[i].v=read();
+		gifts[i].w=read();
+>>>>>>> 3b157d38ba867a706715fa80dd93fa5cd365725f
 		gifts[i].a=gifts[i].v*1.0/gifts[i].w;
 	}
 	
@@ -54,7 +59,11 @@ int main(){
 		}
 	}
 	
+<<<<<<< HEAD
 	printf("%.2lf",cntv);
+=======
+	printf("%.1lf",cntv);
+>>>>>>> 3b157d38ba867a706715fa80dd93fa5cd365725f
 	
 	
 }

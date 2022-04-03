@@ -1,5 +1,15 @@
 /***
  * @Author: Zi_Gao
+<<<<<<< HEAD
+=======
+ * @Date: 2022-03-27 07:57:19
+ * @LastEditTime: 2022-03-27 07:59:37
+ * @LastEditors: Zi_Gao
+ * @Description: 
+ */
+/***
+ * @Author: Zi_Gao
+>>>>>>> 3b157d38ba867a706715fa80dd93fa5cd365725f
  * @Description: 
 6 5
 1 0 1 1 1 0
@@ -13,7 +23,11 @@
 // #define file
 using namespace std;
 inline int read();
+<<<<<<< HEAD
 char arr[2000];
+=======
+char arr[20000];
+>>>>>>> 3b157d38ba867a706715fa80dd93fa5cd365725f
 int main(){
 	#ifdef file
 	freopen("kingdom.in", "r", stdin);
