@@ -36,7 +36,7 @@
 
 ### 00.DFS
 
-**深度优先搜索**顾名思义就是先遍历深度。简单说就是一直往下走，走到底，再往上退后一层，继续往下走，直到把每一个点都访问了。
+**深度优先搜索**顾名思义就是先遍历深度。具体说就是**一直往下走，走到底，再往上退后一层，继续往下走，直到把每一个点都遍历了****。
 
 模板代码:
 
@@ -44,17 +44,17 @@
 /*
  *cur: 当前的点
  *cnt:遍历的点个数
- *e:邻接矩阵
- *book:标记数字
  *INF:正无穷
- */ 
+ *e:邻接矩阵
+ *dfs_book:标记数组
+ */
 void dfs(int cur){
 	printf("%d ",cur);
-	++sum;
+	++cnt;
 	if(cnt==n) return;
 	for(int i=1;i<=n;i++){
-		if(e[cur][i]<INF&&book[i]==0){
-			book[i]=1;
+		if(e[cur][i]<INF&&dfs_book[i]==0){
+			dfs_book[i]=1;
 			dfs(i);
 		}
 	}
@@ -62,6 +62,47 @@ void dfs(int cur){
 ```
 
 ### 01.BFS
+
+**宽度优先搜索**顾名思义就是先遍历宽度。具体就是**从一个出发，把与之相邻的每一点遍历之后，又以与之相邻的第一个点为出发点，遍历与之相邻的没遍历过的点**。
+
+具体实现起来我们可以使用一个**队列**，是一个**先进先出(FIFO—first in first out)**的数据结构，与**栈**的数据结构相对。**我们从一个起始的顶点开始，将与之相邻的所以点入队，之后出队一个元素，这个元素就是当前所在的点。又继续将此时队列顶端的点所相邻的点入**队……重复操作，就实现了宽搜。
+
+模板代码:
+
+```c++
+/*
+ *cur: 当前的点
+ *bfs_book:标记数组
+ *INF:正无穷
+ *e:邻接矩阵
+ *que:队列
+ *head:队头
+ *tail:队尾
+ */
+void bfs(){
+	bool bfs_book[MAX_SIZE]={0};
+	int que[MAX_SIZE]={0},head=0,tail=0,cur=1;
+
+	que[tail++]=cur;
+	bfs_book[cur]=1;
+
+	while(head<tail && tail<n){
+		cur=que[head];
+		for(int i=1;i<=n;i++){
+			if(e[cur][i]!=INF && !bfs_book[i]){
+				que[tail++]=i;
+				bfs_book[i]=1;
+			}
+			if(tail==n) break;
+		}
+		head++;
+	}
+
+	for(int i=1;i<=n;i++){
+		if(bfs_book[i]) printf("%d ",i);
+	}
+}
+```
 
 ## 0011.最短路径
 

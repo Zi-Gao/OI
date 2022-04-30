@@ -12,7 +12,7 @@ int main(){
 	freopen("name.out", "w", stdout);
 	#endif
 
-	
+
 
 	#ifdef file
 	fclose(stdin);
