@@ -15,11 +15,11 @@ DFS:1 2 4 3 5
 #include <cstdio>
 #include <cstring>
 #define file
-const int MAX_SIZE=1000;
+const int MAX_SIZE=1023;
 const int INF=0x3FFFFFFF;
 using namespace std;
 inline int read();
-int e[MAX_SIZE][MAX_SIZE],cnt,n,m;
+int e[MAX_SIZE][MAX_SIZE],e_floyd[MAX_SIZE][MAX_SIZE],cnt,n,m;
 
 void bfs();
 
