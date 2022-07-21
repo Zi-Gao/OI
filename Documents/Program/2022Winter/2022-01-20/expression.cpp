@@ -26,7 +26,7 @@ float expression(){
     }
 }
 int main(){
-    freopen("expression.in","r",stdin);
-    freopen("expression.out","w",stdout);
+//    freopen("expression.in","r",stdin);
+//    freopen("expression.out","w",stdout);
     printf("%.6f\n",expression());
 }

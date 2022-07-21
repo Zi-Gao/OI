@@ -1,0 +1,157 @@
+/***
+ * @Author: Zi_Gao
+ * @Description: 
+ */
+#include <cstdio>
+#include <iostream>
+#define file
+using namespace std;
+//********
+#define link_type int
+struct node{
+	link_type data;
+	node* next;
+	node(){
+		next=NULL;
+	}
+};
+struct link{
+	node* head;
+	node* rear;
+	link(){
+		head=NULL;
+	}
+	
+	void insert(link_type in){
+		node* l=new node;
+		l->data=in;
+		if(head==NULL){
+			head=l;
+		}else{
+			rear->next=l;
+		}
+		rear=l;
+
+		return;
+	}
+	
+	void insert(link_type in,int pos){
+		if(head==NULL&&pos>0) return;
+		node* ins=new node;
+		ins->data=in;
+		if(pos==0){
+			ins->next=head;
+			if(head==NULL) rear=ins;
+			head=ins;
+			return;
+		}
+		node* now=head;
+		while(now!=NULL&&--pos) now=now->next;
+		if(now!=NULL){
+			ins->next=now->next;
+			now->next=ins;
+			if(ins->next==NULL) rear=ins;
+		}
+		return;
+	}
+	
+	void del(){
+		if(head!=NULL){
+			node* l=head;
+			head=head->next;
+			delete(l);
+		}
+		return;
+	}
+	
+	void del(int pos){
+		if(head==NULL) return;
+		node* now=head;
+		if(pos==0){
+			head=now->next;
+			delete(now);
+			if(head==NULL) rear==NULL;
+			return;
+		}
+		while(now!=NULL&&--pos) now=now->next;
+		if(now!=NULL&&now->next!=NULL){
+			node* l=now->next;
+			now->next=l->next;
+			delete(l);
+		}
+		if(now->next==NULL){
+			rear=now;
+		}
+		return;
+	}
+	
+	int find(link_type in){
+		node* now=head;
+		int i=0;
+		while(now!=NULL&&now->data!=in) now=now->next,i++;
+		return i;
+	}
+	
+	void print(){
+		node* now;
+		now=head;
+		while(now!=NULL){
+			printf("%d ",now->data);
+			now=now->next;
+		}
+		return;
+	}
+	
+	bool empty(){
+		return head==NULL;
+	}
+};
+//********
+inline int read();
+link l;
+int main(){
+	#ifdef file
+	freopen("Doubly_Linked_List.in", "r", stdin);
+	freopen("Doubly_Linked_List.out", "w", stdout);
+	#endif
+
+	
+	int n=read();
+	int cnt=0;
+	while(n--){
+		char op[20]={0};
+		scanf("%s",op);
+		int a=0;
+		if(op[0]=='i'){
+			int in=read();
+			l.insert(in,0);
+			cnt++;
+//			l.print();
+//			putchar('\n');
+		}else if(op[0]=='d'&&op[6]=='\0'&&!l.empty()){
+			list<int>iterator it;
+			
+		}else if(op[0]=='d'&&op[6]=='F'&&!l.empty()){
+			l.del(0);
+		}else if(op[0]=='d'&&op[6]=='L'&&!l.empty()){
+			l.del(cnt-1);
+		}
+	}
+	
+	l.print();
+
+	#ifdef file
+	fclose(stdin);
+	fclose(stdout);
+	#endif
+    return 0;
+}
+inline int read(){
+    int x=0,f=1;char c=getchar();
+    while(c<'0'||c>'9')c=='-'?f=-1:f,c=getchar();//?=if,:=else
+    while(c>='0'&&c<='9'){
+        x=(x<<3)+(x<<1)+(c&15);
+        c=getchar();
+    }
+    return x*f;
+}

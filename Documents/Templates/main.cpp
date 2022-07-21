@@ -4,15 +4,12 @@
  */
 #include <cstdio>
 //#define file
-using namespace std;
 inline int read();
 int main(){
 	#ifdef file
 	freopen("name.in", "r", stdin);
 	freopen("name.out", "w", stdout);
 	#endif
-
-	
 
 	#ifdef file
 	fclose(stdin);

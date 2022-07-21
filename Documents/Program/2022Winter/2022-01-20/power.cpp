@@ -6,26 +6,22 @@
  * @Description: 
  */
 #include <cstdio>
-unsigned long long mod;
-unsigned long long qpow(unsigned long long a, unsigned long long b, unsigned long long mod) {
-    unsigned long long ans = 1;
-    if(b==0){
-        return 1;
-    }
-    if(b%2==0){
-        ans=qpow(a,b/2,mod);
-        ans=ans*ans%mod;
-    }else{
-        ans=qpow(a,b-1,mod);
-        ans=ans*a%mod;
-    }
-    return ans;
-}
+using namespace std;
+
+int qpow(int base,int exponential,int mod);
+
 int main(){
-    // freopen("mod.in","r",stdin);
-    // freopen("mod.out","w",stdout);
-    unsigned long long n,m;
-    scanf("%llu %llu %llu",&n,&m,&mod);
-    printf("%llu\n",qpow(n,m,mod));
-    return 0;
+
+}
+
+int qpow(int base,int exponential,int mod){
+    int res = 1;
+    base%=mod;
+    while(exponential){
+        if(exponential&1)
+            res=(res*base)%mod;
+        base=(base*base)%mod;
+        exponential>>=1;
+    }
+    return res;
 }
